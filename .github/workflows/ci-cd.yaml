@@ -33,11 +33,11 @@ jobs:
           - name: Install vercel Cli
             run: npm install --global vercel@latest
           - name: Pull vercel Enviromental Variables
-            run: vercel pull --yess --token=${{ secrets.VERCEL_TOKEN}}
+            run: vercel pull --yes --token=${{ secrets.VERCEL_TOKEN}}
           - name: Trigger Vercel Deployment
             run: vercel deploy --no-wait --token=${{ secrets.VERCEL_TOKEN}}          
     Deploy-Production:
-        name: Deploy to Vercel (Development)
+        name: Deploy to Vercel (Production)
         needs: build
         runs-on: ubuntu-latest
         if: github.ref == 'refs/heads/main'
@@ -50,6 +50,6 @@ jobs:
           - name: Install vercel Cli
             run: npm install --global vercel@latest
           - name: Pull vercel Enviromental Variables
-            run: vercel pull --yess --token=${{ secrets.VERCEL_TOKEN}}
+            run: vercel pull --yes --token=${{ secrets.VERCEL_TOKEN}}
           - name: Trigger Vercel Deployment
             run: vercel deploy --prod --no-wait --token=${{ secrets.VERCEL_TOKEN}}
